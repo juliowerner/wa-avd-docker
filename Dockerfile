@@ -13,6 +13,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -G kvm,libvirt,libvirt-qemu -ms /bin/bash avd
+RUN usermod -a -G video avd #given permission to access /dev/video
 
 # Configure timezone
 RUN ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
@@ -25,8 +26,8 @@ RUN touch /etc/locale.gen && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/
     locale-gen && update-locale
 
 # Create directory volumes
-RUN mkdir -p /home/avd/.android /home/avd/android-sdk/platforms  /home/avd/android-sdk/system-images
-RUN chown avd:avd /home/avd/.android /home/avd/android-sdk /home/avd/android-sdk/platforms  /home/avd/android-sdk/system-images
+RUN mkdir -p /home/avd/.android/avd /home/avd/android-sdk/platforms /home/avd/android-sdk/system-images
+RUN chown avd:avd /home/avd/.android /home/avd/.android/avd /home/avd/android-sdk /home/avd/android-sdk/platforms /home/avd/android-sdk/system-images
 
 USER avd
 WORKDIR /home/avd
