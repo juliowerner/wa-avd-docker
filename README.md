@@ -7,7 +7,11 @@ The Dockerfile uses the following image as a base: [dorowu/ubuntu-desktop-lxde-v
 
 `docker-compose up --build`
 
-## Access noVNC
+## VNC Access
+
+Server: `localhost:5900`
+
+## Web Access (noVNC)
 
 Visit `localhost:6080/vnc.html`
 
@@ -15,18 +19,12 @@ TODO: Put Credentials
 * Default username: `root`
 * Default password: `secret`
 
-## Access VNC client
-
-Server: `localhost:5900`
 
 ## Start Android AVD
 
-Using Supervisord to manage the services, the Android AVD should start up automatically with WhatsApp pre-installed. If it doesn't then...:
+Using Supervisord to manage the services, the Android AVD should start up automatically with WhatsApp pre-installed.
 
-Run the following command
-
-`${ANDROID_HOME}/tools/emulator @WappAPP -gpu off`
-
+`DISPLAY=:0 ${ANDROID_HOME}/tools/emulator @WappAPP -gpu off`
 Using `emulator` throws an error described somewhere on SO... can't recall where, anyway the fix is to call from directory directly.
 
 ## Further Development
