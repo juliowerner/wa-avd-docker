@@ -27,7 +27,7 @@ RUN touch /etc/locale.gen && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/
 
 # Create directory volumes
 RUN mkdir -p /home/avd/.android/avd /home/avd/android-sdk/platforms /home/avd/android-sdk/system-images
-RUN chown avd:avd /home/avd/.android /home/avd/.android/avd /home/avd/android-sdk /home/avd/android-sdk/platforms /home/avd/android-sdk/system-images
+RUN chown -R avd:avd /home/avd/.android /home/avd/android-sdk
 
 USER avd
 WORKDIR /home/avd
