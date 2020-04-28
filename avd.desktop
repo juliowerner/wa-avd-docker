@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/app/start-avd.sh
-StartupNotify=false
-Terminal=false
-Hidden=false
-X-GNOME-Autostart-enabled=true
