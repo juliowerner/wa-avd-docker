@@ -25,7 +25,7 @@ ENV LC_ALL en_US.UTF-8
 RUN touch /etc/locale.gen && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     locale-gen && update-locale
 
-# Create directory volumes
+# Create directory for volumes
 RUN mkdir -p /home/avd/.android/avd /home/avd/android-sdk/platforms /home/avd/android-sdk/system-images
 RUN chown -R avd:avd /home/avd/.android /home/avd/android-sdk
 
@@ -46,10 +46,9 @@ RUN curl "https://dl.google.com/android/repository/commandlinetools-linux-${CMD_
 RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager "tools" "platform-tools" --sdk_root=${ANDROID_HOME}
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-ADD whatsapp.apk .
-ADD start.sh .
-ADD install-wapp.sh .
+COPY whatsapp.apk .
+COPY start.sh .
+COPY install-wapp.sh .
 
 EXPOSE 6080
 EXPOSE 5900
