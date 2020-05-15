@@ -1,4 +1,4 @@
-sleep 10 && adb shell pm list packages | grep whatsapp &> /dev/null
+sleep 15 && adb shell pm list packages | grep whatsapp &> /dev/null
 if [ $? == 0 ]; then
     echo 'WhatsApp already installed'
 else
